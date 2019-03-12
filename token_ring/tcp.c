@@ -6,7 +6,7 @@
 #include <stdlib.h>
 #include <arpa/inet.h>
 
-int set_recport(char* recport){
+int tcp_set_recport(char* recport){
 
     struct sockaddr_in rec_addr;
     rec_addr.sin_family = AF_INET;
@@ -29,7 +29,7 @@ int set_recport(char* recport){
     return rec_socket;
 }
 
-int accept_connection(int socket){
+int tcp_accept_connection(int socket){
 
     struct sockaddr_in rec_addr;
     socklen_t size = sizeof rec_addr;
@@ -38,7 +38,7 @@ int accept_connection(int socket){
     return rec_socket;
 }
 
-int set_sendport(char* send_ip, char* sendport){
+int tcp_set_sendport(char* send_ip, char* sendport){
 
     printf("Setting sendport: %s\n", sendport);
 
@@ -57,12 +57,12 @@ int set_sendport(char* send_ip, char* sendport){
     return send_socket;
 }
 
-int send_init(int socket){
+int tcp_send_init(int socket){
     char* msg = "Hello!\n";
     return send(socket, msg, strlen(msg), 0);
 }
 
-int rec_init(int socket){
+int tcp_rec_init(int socket){
     char msg[100];
     int rec = recv(socket, msg, 100, 0);
     printf("%s\n",msg);

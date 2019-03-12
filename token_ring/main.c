@@ -21,30 +21,43 @@ int main(int argc, char * argv[]) {
     char* send_ip = argv[3];
     char* sendport = argv[4];
 
-    int port_number = atoi(sendport);
-    printf("I listen on port number: %d\n", port_number);
+    int send_port_number = atoi(sendport);
+    printf("I listen on port number: %d\n", send_port_number);
 
     printf("I send to %s\n", argv[4]);
     printf("I have token: %s\n", argv[5]);
     printf("Mode: %s\n", argv[6]);
 
-    if(strcmp(argv[6], "tcp") == 0){
-        int listen_socket = set_recport(recport);
-        int send_socket = set_sendport(send_ip, sendport);
-        int rec_socket = accept_connection(listen_socket);
-        send_init(send_socket);
-        rec_init(rec_socket);
+    int send_socket;
+    int rec_socket;
 
+    if(strcmp(argv[6], "tcp") == 0){
+        int listen_socket = tcp_set_recport(recport);
+        send_socket = tcp_set_sendport(send_ip, sendport);
+        rec_socket = tcp_accept_connection(listen_socket);
+        tcp_send_init(send_socket);
+        tcp_rec_init(rec_socket);
+        close(listen_socket);
     }
     else{
         if(strcmp(argv[6], "udp") == 0){
-            hello_udp();
+            rec_socket = udp_set_recport(recport);
+            send_socket = udp_set_sendport(send_ip, sendport);
 
+
+            int i = udp_send_init(send_socket);
+            printf("Sent: %d\n", i);
+
+            i = udp_rec_init(rec_socket);
+            printf("Received: %d\n", i);
         }else{
             printf("Unknown mode.\n");
             return 1;
         }
     }
-    
+
+
+    close(send_socket);
+    close(rec_socket);
     return 0;
 }

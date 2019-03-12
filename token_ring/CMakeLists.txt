@@ -9,4 +9,4 @@ target_sources(functions PUBLIC udp.c tcp.c)
 
 add_executable(main main.c)
 
-target_link_libraries(main functions)
+target_link_libraries(main functions pthread)
