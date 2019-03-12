@@ -1,0 +1,13 @@
+# ide files
+*.idea
+
+# pycache
+__pycache__/
+
+# cmake build files
+cmake-build-debug/
+
+# files from university
+lab_gniazda/
+
+
