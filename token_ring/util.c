@@ -6,8 +6,6 @@
 
 
 void report_token(char* id){
-    //TODO
-    // it's just a stub, function should report to loggers
 
     int sockfd;
     struct sockaddr_in addr;
@@ -20,8 +18,8 @@ void report_token(char* id){
 
     int broadcast = 1;
     setsockopt(sockfd, SOL_SOCKET, SO_BROADCAST, &broadcast, sizeof(broadcast));
-    int res = sendto(sockfd, id, strlen(id), 0, (struct sockaddr*) &addr, sizeof addr );
-    printf("Sent info about token: %d.\n", res);
+    ssize_t res = sendto(sockfd, id, strlen(id), 0, (struct sockaddr*) &addr, sizeof addr );
+    //printf("Sent info about token: %ld.\n", res);
 
 
 }
