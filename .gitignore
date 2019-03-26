@@ -1,5 +1,6 @@
 # ide files
 *.idea
+*.iml
 
 # pycache
 __pycache__/
@@ -10,4 +11,9 @@ cmake-build-debug/
 # files from university
 lab_gniazda/
 
+# library files
+lib/
 
+# compiled java
+*.jar
+out/
