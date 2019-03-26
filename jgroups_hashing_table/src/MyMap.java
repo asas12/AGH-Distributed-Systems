@@ -111,14 +111,12 @@ public class MyMap implements SimpleStringMap {
                 // odpala się przy otrzymaniu wiadomości
                 System.out.println("Received msg from "+ msg.getSrc() + ": "+ msg.getObject());
                 synchronized (mapInstance){
-                    String info = new String(msg.getObject().toString());
+                    String info = msg.getObject().toString();
                     String[] tokens = info.split(" ");
                     if(tokens[0].equals("r")){
                         mapInstance.remove(tokens[1]);
                         System.out.println("Removing "+ tokens[1]);
                     }else{
-                        System.out.println(tokens[0]);
-                        System.out.println(tokens[0].equals("r"));
                         mapInstance.put(tokens[1], Integer.parseInt(tokens[2]));
                         System.out.println("Updating "+ tokens[1]);
                         //this.;
