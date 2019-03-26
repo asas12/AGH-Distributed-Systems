@@ -46,24 +46,3 @@ int udp_set_sendport(char* send_ip, char* sendport){
 
     return send_socket;
 }
-
-int udp_send_init(int socket, char* from){
-    char* msg = "Hello!\n";
-
-    struct token init = {
-            .mode = INIT,
-    };
-    strcpy(init.from, from);
-    sprintf(init.msg, msg);
-
-    return send(socket, &init, sizeof(init), 0);
-}
-
-int udp_rec_init(int socket){
-
-    struct token init;
-
-    int rec = recv(socket, &init, sizeof(init), 0);
-    printf("%s said: %s\n", init.from, init.msg);
-    return rec;
-}

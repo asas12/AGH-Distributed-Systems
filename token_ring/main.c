@@ -137,38 +137,36 @@ int main(int argc, char * argv[]) {
 
             send(send_socket, &token, sizeof token, 0);
 
-
         }else{
-            if(token.mode == SEND){
-                if(strcmp(token.to, my_name)==0){
-                    // message to me
-                    printf("\t%s says: \"%s\"\nSending conformation.\n", token.from, token.msg);
-                    token.mode = RECEIVED;
-                    strcpy(token.to, token.from);
-                    strcpy(token.from, my_name);
-
-                    send(send_socket, &token, sizeof token, 0);
-                }else{
-                    // not to me
-                    if(strcmp(token.from, my_name)==0){
-                        //circulating frame
-                        token.mode = NONE;
-                    }
-                }
+        if(token.mode == SEND){
+            if(strcmp(token.to, my_name)==0){
+                // message to me
+                printf("\t%s says: \"%s\"\nSending conformation.\n", token.from, token.msg);
+                token.mode = RECEIVED;
+                strcpy(token.to, token.from);
+                strcpy(token.from, my_name);
 
                 send(send_socket, &token, sizeof token, 0);
             }else{
-                if(token.mode == RECEIVED){
-                    if(strcmp(token.to, my_name)==0){
-                        // confirmation for me...
-                        printf("\tReceived conformation from %s\n", token.from);
-                        strcpy(token.from, my_name);
-                        token.mode = NONE;
+                // not to me
+                if(strcmp(token.from, my_name)==0){
+                    //circulating frame
+                    token.mode = NONE;
+                }
+            }
+            send(send_socket, &token, sizeof token, 0);
+        }else{
+            if(token.mode == RECEIVED){
+                if(strcmp(token.to, my_name)==0){
+                    // confirmation for me...
+                    printf("\tReceived conformation from %s\n", token.from);
+                    strcpy(token.from, my_name);
+                    token.mode = NONE;
 
-                    }else if(strcmp(token.from, my_name) == 0){
-                        // ...circulating message...
-                        strcpy(token.from, my_name);
-                        token.mode = NONE;
+                }else if(strcmp(token.from, my_name) == 0){
+                    // ...circulating message...
+                    strcpy(token.from, my_name);
+                    token.mode = NONE;
                     }
                     // ...or none of my business, will relay
 
@@ -208,8 +206,6 @@ int main(int argc, char * argv[]) {
             }
         }
         k++;
-
-
     }
     free(rec_socket_pointer);
     return 0;
