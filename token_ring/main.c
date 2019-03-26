@@ -50,13 +50,6 @@ int main(int argc, char * argv[]) {
     if(strcmp(argv[6], "tcp") == 0) {
         // TCP setup
 
-        //rec_init_socket = tcp_accept_connection(listen_socket);
-
-        //int new_sendport = tcp_rec_init(rec_init_socket);
-
-        //int real_send_socket = tcp_set_sendport(send_ip, new_sendport);
-
-
         //binds, listens and returns socket descriptor
         listen_socket = tcp_set_recport(recport);
 
@@ -76,217 +69,148 @@ int main(int argc, char * argv[]) {
         rec_socket_pointer = malloc(sizeof(rec_socket_pointer));
         *rec_socket_pointer = udp_set_recport(recport);
         send_socket = udp_set_sendport(send_ip, sendport);
+    }
+    // send first token
+    if(strcmp(argv[5], "y")==0) {
+        // for udp, giving it a chance to get up in time...
+        sleep(5);
+        printf("Sending first token.\n");
+        token.mode = NONE;
+        sprintf(token.from,"%s",  my_name);
+        sprintf(token.msg, "First from %s", my_name);
+        strcpy(token.to, my_name);
 
+        res = send(send_socket, &token, sizeof(token), 0);
+        if(res<1){
+            printf("Error sending token.\n");
+        }
+    }else{
+        if(strcmp(argv[6], "udp") == 0){
+            // not the first host
+            struct token init;
+            init.mode = INIT;
+            strcpy(init.msg, recport);
+            strcpy(init.from, my_name);
+            strcpy(init.to, my_name);
+
+            // send where to send data
+            send(send_socket, &init, sizeof init, 0);
+
+            //receive port where to send
+            recv(*rec_socket_pointer, &init, sizeof init, 0);
+
+            // extract info from inviter
+            strcpy(sendport, init.msg);
+
+            // change where to send
+            close(send_socket);
+            send_socket = udp_set_sendport(send_ip, sendport);
+
+            printf("I am connected.\n");
+
+            // host should be inserted into token ring now
+        }
     }
 
-        // send first token
-        if(strcmp(argv[5], "y")==0) {
-            // for udp, giving it a chance to get up in time...
-            sleep(5);
-            printf("Sending first token.\n");
-            token.mode = NONE;
-            sprintf(token.from,"%s",  my_name);
-            sprintf(token.msg, "First from %s", my_name);
-            strcpy(token.to, my_name);
+    // main loop
+    while (k < 1000) {
+        // blocking
+        res =  recv(*rec_socket_pointer, &token, sizeof(token), 0);
+        sleep(1);
+        printf("RECEIVED DATA. MODE: %d, FROM: %s, TO: %s, %s\n", token.mode, token.from, token. to, token.msg);
+        report_token(my_name);
 
-            res = send(send_socket, &token, sizeof(token), 0);
-            if(res<1){
-                printf("Error sending token.\n");
-            }
-        }else{
-            if(strcmp(argv[6], "udp") == 0){
-                // not the first host
-                struct token init;
-                init.mode = INIT;
-                strcpy(init.msg, recport);
-                strcpy(init.from, my_name);
-                strcpy(init.to, my_name);
-
-                // send where to send data
-                send(send_socket, &init, sizeof init, 0);
-
-                //receive port where to send
-                recv(*rec_socket_pointer, &init, sizeof init, 0);
-
-                // extract info from inviter
-                strcpy(sendport, init.msg);
-
-                // change where to send
-                close(send_socket);
-                send_socket = udp_set_sendport(send_ip, sendport);
-
-                printf("I should be connected.\n");
-
-                // host should be inserted into token ring
-            }
-        }
-
-        //tcp_loop(recport, 1, my_name, send_ip, send_port_number);
-
-        // main loop
-        while (k < 1000) {
-            // blocking
-            res =  recv(*rec_socket_pointer, &token, sizeof(token), 0);
-            sleep(1);
-            printf("RECEIVED DATA. MODE: %d, FROM: %s, TO: %s, %s\n", token.mode, token.from, token. to, token.msg);
-            report_token(my_name);
-
-            if(token.mode == NONE){
-                // lets assume always send
-                if(can_send){
-                    printf("\tSent message to %s\n", neighbour);
-                    token.mode = SEND;
-                    sprintf(token.from, "%s", my_name);
-                    sprintf(token.to, "%s", neighbour);
-                    sprintf(token.msg, "Hello from %s", my_name);
-                    can_send = 0;
-                }else{
-                    // let empty token once
-                    printf("\tLetting others use token.\n");
-                    can_send = 1;
-                }
-
-                send(send_socket, &token, sizeof token, 0);
-
-
+        if(token.mode == NONE){
+            // lets assume always send
+            if(can_send){
+                printf("\tSent message to %s\n", neighbour);
+                token.mode = SEND;
+                sprintf(token.from, "%s", my_name);
+                sprintf(token.to, "%s", neighbour);
+                sprintf(token.msg, "Hello from %s", my_name);
+                can_send = 0;
             }else{
-                if(token.mode == SEND){
-                    if(strcmp(token.to, my_name)==0){
-                        // message to me
-                        printf("\t%s says: \"%s\"\nSending conformation.\n", token.from, token.msg);
-                        token.mode = RECEIVED;
-                        strcpy(token.to, token.from);
-                        strcpy(token.from, my_name);
+                // let empty token once
+                printf("\tLetting others use token.\n");
+                can_send = 1;
+            }
 
-                        send(send_socket, &token, sizeof token, 0);
-                    }else{
-                        // not to me
-                        if(strcmp(token.from, my_name)==0){
-                            //circulating frame
-                            token.mode = NONE;
-                        }
-                    }
+            send(send_socket, &token, sizeof token, 0);
+
+
+        }else{
+            if(token.mode == SEND){
+                if(strcmp(token.to, my_name)==0){
+                    // message to me
+                    printf("\t%s says: \"%s\"\nSending conformation.\n", token.from, token.msg);
+                    token.mode = RECEIVED;
+                    strcpy(token.to, token.from);
+                    strcpy(token.from, my_name);
 
                     send(send_socket, &token, sizeof token, 0);
                 }else{
-                    if(token.mode == RECEIVED){
-                        if(strcmp(token.to, my_name)==0){
-                            // confirmation for me...
-                            printf("\tReceived conformation from %s\n", token.from);
-                            strcpy(token.from, my_name);
-                            token.mode = NONE;
-
-                        }else if(strcmp(token.from, my_name) == 0){
-                            // ...circulating message...
-                            strcpy(token.from, my_name);
-                            token.mode = NONE;
-                        }
-                        // ...or none of my business, will relay
-
-
-                    }else{
-                        if(strcmp(argv[5], "tcp")==0) {
-                            printf("Weird mode: %d\n", token.mode);
-                        }else{
-                            //UDP - adding new clients
-                            if(token.mode == INIT){
-                                printf("Received request to insert: %s\n", token.from);
-                                token.mode = INITREPLY;
-                                strcpy(token.to, token.from);
-                                strcpy(token.from, my_name);
-
-                                // get info where to send next
-                                char* new_sendport = malloc(sizeof(*token.msg));
-                                strcpy(new_sendport, token.msg);
-                                int new_sendsocket = udp_set_sendport(send_ip, new_sendport);
-
-                                // send data to new host
-                                strcpy(token.msg, sendport);
-                                send(new_sendsocket, &token, sizeof token, 0);
-
-                                // update sockets and ports
-                                free(sendport);
-                                sendport = new_sendport;
-                                close(send_socket);
-                                send_socket = new_sendsocket;
-                                printf("Now sending to %s\n", new_sendport);
-
-                            }
-
-
-                        }
-                    }
-                    // ugly
-                    if(token.mode!=INIT && token.mode!=INITREPLY){
-                        send(send_socket, &token, sizeof(token), 0);
+                    // not to me
+                    if(strcmp(token.from, my_name)==0){
+                        //circulating frame
+                        token.mode = NONE;
                     }
                 }
-            }
 
-
-
-
-            /*
-            if(strcmp(token.to, my_name)==0) {
-                printf("received %ld bytes from %s: %s\n", res, token.from, token.msg);
-                token.mode = RECEIVED;
-                sprintf(token.to, "%s", neighbour);
-                sprintf(token.from, "%s", my_name);
-
+                send(send_socket, &token, sizeof token, 0);
             }else{
-                if(token.mode == NONE) {
-                    token.mode = SEND;
-                    sprintf(token.from, "%s", my_name);
-                    sprintf(token.to, "%s", neighbour);
-                    sprintf(token.msg, "Hello from %s", my_name);
+                if(token.mode == RECEIVED){
+                    if(strcmp(token.to, my_name)==0){
+                        // confirmation for me...
+                        printf("\tReceived conformation from %s\n", token.from);
+                        strcpy(token.from, my_name);
+                        token.mode = NONE;
 
-                    res = send(send_socket, &token, sizeof(token), 0);
-                }
-                else{
-                        // send through
-                        send(send_socket, &token, sizeof(token), 0);
+                    }else if(strcmp(token.from, my_name) == 0){
+                        // ...circulating message...
+                        strcpy(token.from, my_name);
+                        token.mode = NONE;
                     }
+                    // ...or none of my business, will relay
+
+                }else{
+                    if(strcmp(argv[5], "tcp")==0) {
+                        printf("Unknown mode: %d\n", token.mode);
+                    }else{
+                        //UDP - adding new clients
+                        if(token.mode == INIT){
+                            printf("Received request to insert: %s\n", token.from);
+                            token.mode = INITREPLY;
+                            strcpy(token.to, token.from);
+                            strcpy(token.from, my_name);
+
+                            // get info where to send next
+                            char* new_sendport = malloc(sizeof(*token.msg));
+                            strcpy(new_sendport, token.msg);
+                            int new_sendsocket = udp_set_sendport(send_ip, new_sendport);
+
+                            // send data to new host
+                            strcpy(token.msg, sendport);
+                            send(new_sendsocket, &token, sizeof token, 0);
+
+                            // update sockets and ports
+                            free(sendport);
+                            sendport = new_sendport;
+                            close(send_socket);
+                            send_socket = new_sendsocket;
+                            printf("Now sending to %s\n", new_sendport);
+                        }
+                    }
+                }
+                // send token to next host
+                if(token.mode!=INIT && token.mode!=INITREPLY){
+                    send(send_socket, &token, sizeof(token), 0);
+                }
             }
-                report_token(my_name);
-            */
-                k++;
-
-
         }
-
-        //close(real_send_socket);
-    //}
-    /*else{
-        if(strcmp(argv[6], "udp") == 0) {
-            int rec_socket;
-            rec_socket = udp_set_recport(recport);
-            int send_socket = udp_set_sendport(send_ip, sendport);
-
-            int k = 0;
-            while (k < 1000) {
-            int i = udp_send_init(send_socket, my_name);
-            printf("Sent: %d\n", i);
-
-            i = udp_rec_init(rec_socket);
-            if (i > 0) {
-                report_token(my_name);
-                printf("Received: %d\n", i);
-            }
-
-            k++;
-            sleep(1);
-        }
+        k++;
 
 
-            close(rec_socket);
-            close(send_socket);
-
-        }else{
-            printf("Unknown mode.\n");
-            return 1;
-        }
-    }*/
+    }
     free(rec_socket_pointer);
-
     return 0;
 }

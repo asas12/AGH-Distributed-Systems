@@ -6,6 +6,7 @@
 
 
 void report_token(char* id){
+    // function sends info about received token to loogers
 
     int sockfd;
     struct sockaddr_in addr;
@@ -19,7 +20,4 @@ void report_token(char* id){
     int broadcast = 1;
     setsockopt(sockfd, SOL_SOCKET, SO_BROADCAST, &broadcast, sizeof(broadcast));
     ssize_t res = sendto(sockfd, id, strlen(id), 0, (struct sockaddr*) &addr, sizeof addr );
-    //printf("Sent info about token: %ld.\n", res);
-
-
 }

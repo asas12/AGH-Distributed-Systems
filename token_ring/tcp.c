@@ -45,11 +45,6 @@ void* tcp_accept_connection(void* socket_ptr){
     while(rec_socket<0){
         //rec_socket = accept4(socket, (struct sockaddr*) &rec_addr, &size, SOCK_NONBLOCK);
         rec_socket = accept4(socket, (struct sockaddr*) &rec_addr, &size, 0);
-       /* if(rec_socket>0) {
-            printf("Accepted connection on recport.\n");
-        }else{
-            printf("Nobady wants to connect on recport\n");
-        }*/
     }
     printf("Accepted connection on recport.\n");
     *res_ptr =  rec_socket;
@@ -90,8 +85,6 @@ int tcp_send_init(int socket, char* from, char* recport){
     return send(socket, &init, sizeof(init), 0);
 }
 
-
-
 int tcp_rec_init(int socket){
 
     struct token init;
@@ -99,8 +92,6 @@ int tcp_rec_init(int socket){
     int rec = recv(socket, &init, sizeof(init), 0);
     printf("%s said to send to port: %s\n", init.from, init.msg);
     return atoi(init.msg);
-
-
 }
 
 int tcp_send_msg(int socket, char* msg, char* from, char* to){
@@ -111,7 +102,6 @@ int tcp_send_msg(int socket, char* msg, char* from, char* to){
     strcpy(token.msg, msg);
 
     return send(socket, &token, sizeof(token), 0);
-
 }
 
 void tcp_loop(char* recport, int has_token, char* my_name, char* send_ip, int sendport) {
@@ -275,61 +265,3 @@ void tcp_loop(char* recport, int has_token, char* my_name, char* send_ip, int se
         printf("loop: %d\n",i);
     }
 }
-
-
-/*
-void tcp_loop(int rec_socket, int has_token, char* my_name) {
-
-    int i = 0;
-    pthread_t accepter;
-    pthread_create(&accepter, NULL, tcp_accept_connection, (void*)&rec_socket);
-    int* send_socket; //= malloc(sizeof(rec_sock));
-
-    //blocking - waiting for response from inviter
-    (accepter, (void**) &send_socket);
-    if (send_socket > 0) {
-        printf("Ktoś się zgłosił\n");
-        //TODO
-        int new_sendport = tcp_rec_init(send_socket);
-        // IP should be received from new host, but...
-        //close(send_socket);
-        send_socket = tcp_set_sendport("127.0.0.1", new_sendport);
-    }
-    if (has_token!=0){
-        report_token(my_name);
-
-    struct token token;
-    token.mode = NONE;
-    strcpy(token.from, my_name);
-    strcpy(token.msg, "Not a message.\n");
-
-    send(send_socket, &token, sizeof(token), 0);
-    printf("Sent token for the first time\n");
-}
-
-    while(i<4){
-        int socket = tcp_accept_connection(rec_socket);
-        if(socket>0){
-            close(send_socket);
-            printf("Ktoś się zgłosił\n");
-            //TODO
-            int new_sendport = tcp_rec_init(socket);
-            // IP should be received from new host, but...
-            //close(send_socket);
-            send_socket = tcp_set_sendport("127.0.0.1", new_sendport);
-        }
-
-        struct token received;
-        int rec = recv(socket, &received, sizeof(received), 0);
-
-        if(rec>0){
-            printf("Received msg: %s from %s\n", received.msg, received.from);
-        }
-
-
-
-        sleep(1);
-        i++;
-    }
-    close(send_socket);
-}*/
