@@ -16,6 +16,8 @@ import org.jgroups.protocols.pbcast.*;
 import org.jgroups.stack.ProtocolStack;
 import org.jgroups.util.Util;
 
+import static java.lang.Thread.sleep;
+
 public class MyMap implements SimpleStringMap {
 
     private JChannel channel;
@@ -29,7 +31,7 @@ public class MyMap implements SimpleStringMap {
 
         ProtocolStack stack=new ProtocolStack();
         channel.setProtocolStack(stack);
-        stack.addProtocol(new UDP().setValue("mcast_group_addr",InetAddress.getByName("230.100.200.52")))
+        stack.addProtocol(new UDP().setValue("mcast_group_addr",InetAddress.getByName("230.100.200.53")))
                 .addProtocol(new PING())
                 .addProtocol(new MERGE3())
                 .addProtocol(new FD_SOCK())
@@ -43,7 +45,9 @@ public class MyMap implements SimpleStringMap {
                 .addProtocol(new UFC())
                 .addProtocol(new MFC())
                 .addProtocol(new FRAG2())
-                .addProtocol(new STATE_TRANSFER());
+                .addProtocol(new STATE_TRANSFER())
+                .addProtocol(new SEQUENCER())
+                .addProtocol(new FLUSH());
 
         // TODO chyba musi być flush etc
 
@@ -97,6 +101,11 @@ public class MyMap implements SimpleStringMap {
 
     public void close(){
         //TODO disconnect rather???
+        try {
+            sleep(60000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         channel.close();
     }
 
@@ -116,17 +125,21 @@ public class MyMap implements SimpleStringMap {
             }
             public void receive(Message msg) {
                 // odpala się przy otrzymaniu wiadomości
-                System.out.println("Received msg from "+ msg.getSrc() + ": "+ msg.getObject());
-                synchronized (mapInstance){
-                    String info = msg.getObject().toString();
-                    String[] tokens = info.split(" ");
-                    if(tokens[0].equals("r")){
-                        mapInstance.remove(tokens[1]);
-                        System.out.println("Removing "+ tokens[1]);
-                    }else{
-                        mapInstance.put(tokens[1], Integer.parseInt(tokens[2]));
-                        System.out.println("Updating "+ tokens[1]);
-                        //this.;
+                if(msg.getSrc().equals(channel.getAddress())){
+                    System.out.println("Discarding message from myself...");
+                }else {
+                    System.out.println("Received msg from " + msg.getSrc() + ": " + msg.getObject());
+                    synchronized (mapInstance) {
+                        String info = msg.getObject().toString();
+                        String[] tokens = info.split(" ");
+                        if (tokens[0].equals("r")) {
+                            mapInstance.remove(tokens[1]);
+                            System.out.println("Removing " + tokens[1]);
+                        } else {
+                            mapInstance.put(tokens[1], Integer.parseInt(tokens[2]));
+                            System.out.println("Updating " + tokens[1]);
+                            //this.;
+                        }
                     }
                 }
             }
@@ -134,7 +147,7 @@ public class MyMap implements SimpleStringMap {
                 synchronized (mapInstance){
                     Util.objectToStream(mapInstance, new DataOutputStream(output));
                 }
-                System.out.println("Got state");
+                System.out.println("Get state.");
 
             }
 
@@ -145,7 +158,7 @@ public class MyMap implements SimpleStringMap {
                     mapInstance.clear();
                     mapInstance.putAll(map);
                 }
-                System.out.println("Got state: " + Collections.singletonList(map));
+                System.out.println("Setting state: " + Collections.singletonList(map));
             }
         });
     }
