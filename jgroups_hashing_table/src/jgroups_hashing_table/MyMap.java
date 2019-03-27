@@ -7,6 +7,8 @@ import java.io.OutputStream;
 import java.net.InetAddress;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Vector;
 
 import org.jgroups.*;
 import org.jgroups.protocols.*;
@@ -93,14 +95,12 @@ public class MyMap implements SimpleStringMap {
         return returnedValue;
     }
 
-
-
     public void close(){
         //TODO disconnect rather???
         channel.close();
     }
 
-    private void setReceiver(Channel channel){
+    private void setReceiver(JChannel channel){
         channel.setReceiver(new ReceiverAdapter(){
             @Override
             public void viewAccepted(View view) {
@@ -109,6 +109,9 @@ public class MyMap implements SimpleStringMap {
                 System.out.println("Instances: " + view.toString());
                 if(view instanceof MergeView){
                     System.out.println("View - instanceof mergeview.");
+                    MergeView tmp = (MergeView) view;
+                    ViewHandler vh = new ViewHandler(channel, tmp);
+                    vh.start();
                 }
             }
             public void receive(Message msg) {
