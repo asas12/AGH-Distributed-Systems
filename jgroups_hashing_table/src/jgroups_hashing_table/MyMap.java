@@ -1,8 +1,9 @@
+package jgroups_hashing_table;
+
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.util.Collections;
 import java.util.HashMap;
@@ -106,6 +107,9 @@ public class MyMap implements SimpleStringMap {
                 // wyświetla listę instancji w klastrze przy wchodzeniu/ wychodzeniu
                 super.viewAccepted(view);
                 System.out.println("Instances: " + view.toString());
+                if(view instanceof MergeView){
+                    System.out.println("View - instanceof mergeview.");
+                }
             }
             public void receive(Message msg) {
                 // odpala się przy otrzymaniu wiadomości

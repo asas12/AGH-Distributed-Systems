@@ -1,3 +1,5 @@
+package jgroups_hashing_table;
+
 public interface SimpleStringMap {
 
     boolean containsKey(String key);
