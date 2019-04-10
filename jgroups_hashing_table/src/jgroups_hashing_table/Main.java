@@ -39,6 +39,15 @@ public class Main {
                         System.out.println("Closing channel.");
                         close = true;
                         break;
+                    case "print":
+                        System.out.println(myMap.print());
+                        break;
+                    case "drop":
+                        myMap.drop();
+                        break;
+                    case "undrop":
+                        myMap.undrop();
+                        break;
                     default:
                         System.out.println("Unknown command.");
 

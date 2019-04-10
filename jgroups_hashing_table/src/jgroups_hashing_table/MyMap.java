@@ -7,8 +7,6 @@ import java.io.OutputStream;
 import java.net.InetAddress;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Vector;
 
 import org.jgroups.*;
 import org.jgroups.protocols.*;
@@ -23,6 +21,7 @@ public class MyMap implements SimpleStringMap {
     private JChannel channel;
     private final HashMap<String, Integer> mapInstance;
 
+    private DISCARD discard;
 
     public MyMap() throws Exception {
         mapInstance = new HashMap<String, Integer>();
@@ -46,10 +45,8 @@ public class MyMap implements SimpleStringMap {
                 .addProtocol(new MFC())
                 .addProtocol(new FRAG2())
                 .addProtocol(new STATE_TRANSFER())
-                .addProtocol(new SEQUENCER())
-                .addProtocol(new FLUSH());
-
-        // TODO chyba musi być flush etc
+                .addProtocol(new SEQUENCER());
+                //.addProtocol(new FLUSH());
 
         stack.init();
 
@@ -100,13 +97,27 @@ public class MyMap implements SimpleStringMap {
     }
 
     public void close(){
-        //TODO disconnect rather???
         try {
             sleep(60000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
         channel.close();
+    }
+
+    public String print(){
+        return mapInstance.toString();
+    }
+
+    public void drop(){
+        this.discard = new DISCARD().setDiscardAll(true);
+        channel.getProtocolStack().addProtocol(discard);
+        System.out.println(channel.getProtocolStack().getProtocols());
+    }
+
+    public void undrop(){
+        channel.getProtocolStack().removeProtocol(DISCARD.class);
+        System.out.println(channel.getProtocolStack().getProtocols());
     }
 
     private void setReceiver(JChannel channel){

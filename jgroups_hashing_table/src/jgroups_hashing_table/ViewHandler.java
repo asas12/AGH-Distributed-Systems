@@ -25,7 +25,7 @@ public class ViewHandler extends Thread{
         if(!chosen_view.getMembers().contains(local_addr)){
             System.out.println("I have to update state.");
             try {
-                ch.getState(null, 0);
+                ch.getState(chosen_view.getMembers().get(0), 0);
             } catch (Exception e) {
                 e.printStackTrace();
             }
