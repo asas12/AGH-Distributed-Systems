@@ -1,0 +1,438 @@
+2019-04-10 15:01:46 =CRASH REPORT====
+  crasher:
+    initial call: rabbit_writer:enter_mainloop/2
+    pid: <0.250.0>
+    registered_name: []
+    exception error: bad argument: [{erlang,size,[#{consumer_count => 0,message_count => 0,queue => <<"amq.gen-r_bTlc9dGwDV8G_YyR_lLw">>}],[]},{rabbit_framing_amqp_0_9_1,shortstr_size,1,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_framing_amqp_0_9_1.erl"},{line,185}]},{rabbit_framing_amqp_0_9_1,encode_method_fields,1,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_framing_amqp_0_9_1.erl"},{line,1088}]},{rabbit_binary_generator,build_simple_method_frame,3,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_binary_generator.erl"},{line,59}]},{rabbit_writer,internal_send_command_async,2,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,333}]},{rabbit_writer,handle_message,3,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,209}]},{rabbit_writer,mainloop1,2,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,193}]},{rabbit_writer,mainloop,2,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,184}]}]
+    ancestors: [<0.247.0>,<0.241.0>,<0.237.0>,<0.236.0>,amqp_sup,<0.229.0>]
+    message_queue_len: 0
+    messages: []
+    links: [<0.247.0>]
+    dictionary: [{process_name,{rabbit_writer,{<<"client 127.0.0.1:38793 -> 127.0.0.1:5672">>,1}}}]
+    trap_exit: false
+    status: running
+    heap_size: 2586
+    stack_size: 27
+    reductions: 1002
+  neighbours:
+2019-04-10 15:01:46 =SUPERVISOR REPORT====
+     Supervisor: {<0.247.0>,amqp_channel_sup}
+     Context:    child_terminated
+     Reason:     {badarg,[{erlang,size,[#{consumer_count => 0,message_count => 0,queue => <<"amq.gen-r_bTlc9dGwDV8G_YyR_lLw">>}],[]},{rabbit_framing_amqp_0_9_1,shortstr_size,1,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_framing_amqp_0_9_1.erl"},{line,185}]},{rabbit_framing_amqp_0_9_1,encode_method_fields,1,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_framing_amqp_0_9_1.erl"},{line,1088}]},{rabbit_binary_generator,build_simple_method_frame,3,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_binary_generator.erl"},{line,59}]},{rabbit_writer,internal_send_command_async,2,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,333}]},{rabbit_writer,handle_message,3,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,209}]},{rabbit_writer,mainloop1,2,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,193}]},{rabbit_writer,mainloop,2,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,184}]}]}
+     Offender:   [{pid,<0.250.0>},{name,writer},{mfargs,{rabbit_writer,start_link,[#Port<0.7>,1,131072,rabbit_framing_amqp_0_9_1,<0.249.0>,{<<"client 127.0.0.1:38793 -> 127.0.0.1:5672">>,1}]}},{restart_type,transient},{shutdown,30000},{child_type,worker}]
+
+2019-04-10 15:01:46 =SUPERVISOR REPORT====
+     Supervisor: {<0.247.0>,amqp_channel_sup}
+     Context:    shutdown
+     Reason:     reached_max_restart_intensity
+     Offender:   [{pid,<0.250.0>},{name,writer},{mfargs,{rabbit_writer,start_link,[#Port<0.7>,1,131072,rabbit_framing_amqp_0_9_1,<0.249.0>,{<<"client 127.0.0.1:38793 -> 127.0.0.1:5672">>,1}]}},{restart_type,transient},{shutdown,30000},{child_type,worker}]
+
+2019-04-10 15:06:59 =CRASH REPORT====
+  crasher:
+    initial call: rabbit_writer:enter_mainloop/2
+    pid: <0.250.0>
+    registered_name: []
+    exception error: bad argument: [{erlang,size,[#{consumer_count => 0,message_count => 0,queue => <<"amq.gen-LbGy2p1bnI0_toRcedk77g">>}],[]},{rabbit_framing_amqp_0_9_1,shortstr_size,1,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_framing_amqp_0_9_1.erl"},{line,185}]},{rabbit_framing_amqp_0_9_1,encode_method_fields,1,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_framing_amqp_0_9_1.erl"},{line,1088}]},{rabbit_binary_generator,build_simple_method_frame,3,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_binary_generator.erl"},{line,59}]},{rabbit_writer,internal_send_command_async,2,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,333}]},{rabbit_writer,handle_message,3,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,209}]},{rabbit_writer,mainloop1,2,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,193}]},{rabbit_writer,mainloop,2,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,184}]}]
+    ancestors: [<0.247.0>,<0.241.0>,<0.237.0>,<0.236.0>,amqp_sup,<0.229.0>]
+    message_queue_len: 0
+    messages: []
+    links: [<0.247.0>]
+    dictionary: [{process_name,{rabbit_writer,{<<"client 127.0.0.1:52491 -> 127.0.0.1:5672">>,1}}}]
+    trap_exit: false
+    status: running
+    heap_size: 2586
+    stack_size: 27
+    reductions: 1002
+  neighbours:
+2019-04-10 15:06:59 =SUPERVISOR REPORT====
+     Supervisor: {<0.247.0>,amqp_channel_sup}
+     Context:    child_terminated
+     Reason:     {badarg,[{erlang,size,[#{consumer_count => 0,message_count => 0,queue => <<"amq.gen-LbGy2p1bnI0_toRcedk77g">>}],[]},{rabbit_framing_amqp_0_9_1,shortstr_size,1,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_framing_amqp_0_9_1.erl"},{line,185}]},{rabbit_framing_amqp_0_9_1,encode_method_fields,1,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_framing_amqp_0_9_1.erl"},{line,1088}]},{rabbit_binary_generator,build_simple_method_frame,3,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_binary_generator.erl"},{line,59}]},{rabbit_writer,internal_send_command_async,2,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,333}]},{rabbit_writer,handle_message,3,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,209}]},{rabbit_writer,mainloop1,2,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,193}]},{rabbit_writer,mainloop,2,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,184}]}]}
+     Offender:   [{pid,<0.250.0>},{name,writer},{mfargs,{rabbit_writer,start_link,[#Port<0.7>,1,131072,rabbit_framing_amqp_0_9_1,<0.249.0>,{<<"client 127.0.0.1:52491 -> 127.0.0.1:5672">>,1}]}},{restart_type,transient},{shutdown,30000},{child_type,worker}]
+
+2019-04-10 15:06:59 =SUPERVISOR REPORT====
+     Supervisor: {<0.247.0>,amqp_channel_sup}
+     Context:    shutdown
+     Reason:     reached_max_restart_intensity
+     Offender:   [{pid,<0.250.0>},{name,writer},{mfargs,{rabbit_writer,start_link,[#Port<0.7>,1,131072,rabbit_framing_amqp_0_9_1,<0.249.0>,{<<"client 127.0.0.1:52491 -> 127.0.0.1:5672">>,1}]}},{restart_type,transient},{shutdown,30000},{child_type,worker}]
+
+2019-04-10 15:13:38 =CRASH REPORT====
+  crasher:
+    initial call: rabbit_writer:enter_mainloop/2
+    pid: <0.251.0>
+    registered_name: []
+    exception error: bad argument: [{erlang,size,[#{consumer_count => 0,message_count => 0,queue => <<"amq.gen-E_4jr841uYvAUyKWfxGMZw">>}],[]},{rabbit_framing_amqp_0_9_1,shortstr_size,1,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_framing_amqp_0_9_1.erl"},{line,185}]},{rabbit_framing_amqp_0_9_1,encode_method_fields,1,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_framing_amqp_0_9_1.erl"},{line,1088}]},{rabbit_binary_generator,build_simple_method_frame,3,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_binary_generator.erl"},{line,59}]},{rabbit_writer,internal_send_command_async,2,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,333}]},{rabbit_writer,handle_message,3,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,209}]},{rabbit_writer,mainloop1,2,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,193}]},{rabbit_writer,mainloop,2,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,184}]}]
+    ancestors: [<0.248.0>,<0.242.0>,<0.238.0>,<0.237.0>,amqp_sup,<0.229.0>]
+    message_queue_len: 0
+    messages: []
+    links: [<0.248.0>]
+    dictionary: [{process_name,{rabbit_writer,{<<"client 127.0.0.1:40103 -> 127.0.0.1:5672">>,1}}}]
+    trap_exit: false
+    status: running
+    heap_size: 2586
+    stack_size: 27
+    reductions: 1002
+  neighbours:
+2019-04-10 15:13:38 =SUPERVISOR REPORT====
+     Supervisor: {<0.248.0>,amqp_channel_sup}
+     Context:    child_terminated
+     Reason:     {badarg,[{erlang,size,[#{consumer_count => 0,message_count => 0,queue => <<"amq.gen-E_4jr841uYvAUyKWfxGMZw">>}],[]},{rabbit_framing_amqp_0_9_1,shortstr_size,1,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_framing_amqp_0_9_1.erl"},{line,185}]},{rabbit_framing_amqp_0_9_1,encode_method_fields,1,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_framing_amqp_0_9_1.erl"},{line,1088}]},{rabbit_binary_generator,build_simple_method_frame,3,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_binary_generator.erl"},{line,59}]},{rabbit_writer,internal_send_command_async,2,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,333}]},{rabbit_writer,handle_message,3,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,209}]},{rabbit_writer,mainloop1,2,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,193}]},{rabbit_writer,mainloop,2,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,184}]}]}
+     Offender:   [{pid,<0.251.0>},{name,writer},{mfargs,{rabbit_writer,start_link,[#Port<0.7>,1,131072,rabbit_framing_amqp_0_9_1,<0.250.0>,{<<"client 127.0.0.1:40103 -> 127.0.0.1:5672">>,1}]}},{restart_type,transient},{shutdown,30000},{child_type,worker}]
+
+2019-04-10 15:13:38 =SUPERVISOR REPORT====
+     Supervisor: {<0.248.0>,amqp_channel_sup}
+     Context:    shutdown
+     Reason:     reached_max_restart_intensity
+     Offender:   [{pid,<0.251.0>},{name,writer},{mfargs,{rabbit_writer,start_link,[#Port<0.7>,1,131072,rabbit_framing_amqp_0_9_1,<0.250.0>,{<<"client 127.0.0.1:40103 -> 127.0.0.1:5672">>,1}]}},{restart_type,transient},{shutdown,30000},{child_type,worker}]
+
+2019-04-10 15:21:44 =CRASH REPORT====
+  crasher:
+    initial call: rabbit_writer:enter_mainloop/2
+    pid: <0.250.0>
+    registered_name: []
+    exception error: bad argument: [{erlang,size,[#{consumer_count => 0,message_count => 0,queue => <<"amq.gen-HaBwDtWPCVbgZi_cLpPv8Q">>}],[]},{rabbit_framing_amqp_0_9_1,shortstr_size,1,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_framing_amqp_0_9_1.erl"},{line,185}]},{rabbit_framing_amqp_0_9_1,encode_method_fields,1,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_framing_amqp_0_9_1.erl"},{line,1088}]},{rabbit_binary_generator,build_simple_method_frame,3,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_binary_generator.erl"},{line,59}]},{rabbit_writer,internal_send_command_async,2,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,333}]},{rabbit_writer,handle_message,3,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,209}]},{rabbit_writer,mainloop1,2,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,193}]},{rabbit_writer,mainloop,2,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,184}]}]
+    ancestors: [<0.247.0>,<0.241.0>,<0.237.0>,<0.236.0>,amqp_sup,<0.229.0>]
+    message_queue_len: 0
+    messages: []
+    links: [<0.247.0>]
+    dictionary: [{process_name,{rabbit_writer,{<<"client 127.0.0.1:44831 -> 127.0.0.1:5672">>,1}}}]
+    trap_exit: false
+    status: running
+    heap_size: 2586
+    stack_size: 27
+    reductions: 1002
+  neighbours:
+2019-04-10 15:21:44 =SUPERVISOR REPORT====
+     Supervisor: {<0.247.0>,amqp_channel_sup}
+     Context:    child_terminated
+     Reason:     {badarg,[{erlang,size,[#{consumer_count => 0,message_count => 0,queue => <<"amq.gen-HaBwDtWPCVbgZi_cLpPv8Q">>}],[]},{rabbit_framing_amqp_0_9_1,shortstr_size,1,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_framing_amqp_0_9_1.erl"},{line,185}]},{rabbit_framing_amqp_0_9_1,encode_method_fields,1,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_framing_amqp_0_9_1.erl"},{line,1088}]},{rabbit_binary_generator,build_simple_method_frame,3,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_binary_generator.erl"},{line,59}]},{rabbit_writer,internal_send_command_async,2,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,333}]},{rabbit_writer,handle_message,3,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,209}]},{rabbit_writer,mainloop1,2,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,193}]},{rabbit_writer,mainloop,2,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,184}]}]}
+     Offender:   [{pid,<0.250.0>},{name,writer},{mfargs,{rabbit_writer,start_link,[#Port<0.7>,1,131072,rabbit_framing_amqp_0_9_1,<0.249.0>,{<<"client 127.0.0.1:44831 -> 127.0.0.1:5672">>,1}]}},{restart_type,transient},{shutdown,30000},{child_type,worker}]
+
+2019-04-10 15:21:44 =SUPERVISOR REPORT====
+     Supervisor: {<0.247.0>,amqp_channel_sup}
+     Context:    shutdown
+     Reason:     reached_max_restart_intensity
+     Offender:   [{pid,<0.250.0>},{name,writer},{mfargs,{rabbit_writer,start_link,[#Port<0.7>,1,131072,rabbit_framing_amqp_0_9_1,<0.249.0>,{<<"client 127.0.0.1:44831 -> 127.0.0.1:5672">>,1}]}},{restart_type,transient},{shutdown,30000},{child_type,worker}]
+
+2019-04-10 15:23:20 =CRASH REPORT====
+  crasher:
+    initial call: rabbit_writer:enter_mainloop/2
+    pid: <0.250.0>
+    registered_name: []
+    exception error: bad argument: [{erlang,size,[#{consumer_count => 0,message_count => 0,queue => <<"amq.gen-chaB4AWhZ5whQSZmFcK0Kg">>}],[]},{rabbit_framing_amqp_0_9_1,shortstr_size,1,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_framing_amqp_0_9_1.erl"},{line,185}]},{rabbit_framing_amqp_0_9_1,encode_method_fields,1,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_framing_amqp_0_9_1.erl"},{line,1088}]},{rabbit_binary_generator,build_simple_method_frame,3,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_binary_generator.erl"},{line,59}]},{rabbit_writer,internal_send_command_async,2,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,333}]},{rabbit_writer,handle_message,3,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,209}]},{rabbit_writer,mainloop1,2,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,193}]},{rabbit_writer,mainloop,2,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,184}]}]
+    ancestors: [<0.247.0>,<0.241.0>,<0.237.0>,<0.236.0>,amqp_sup,<0.229.0>]
+    message_queue_len: 0
+    messages: []
+    links: [<0.247.0>]
+    dictionary: [{process_name,{rabbit_writer,{<<"client 127.0.0.1:39357 -> 127.0.0.1:5672">>,1}}}]
+    trap_exit: false
+    status: running
+    heap_size: 2586
+    stack_size: 27
+    reductions: 1002
+  neighbours:
+2019-04-10 15:23:20 =SUPERVISOR REPORT====
+     Supervisor: {<0.247.0>,amqp_channel_sup}
+     Context:    child_terminated
+     Reason:     {badarg,[{erlang,size,[#{consumer_count => 0,message_count => 0,queue => <<"amq.gen-chaB4AWhZ5whQSZmFcK0Kg">>}],[]},{rabbit_framing_amqp_0_9_1,shortstr_size,1,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_framing_amqp_0_9_1.erl"},{line,185}]},{rabbit_framing_amqp_0_9_1,encode_method_fields,1,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_framing_amqp_0_9_1.erl"},{line,1088}]},{rabbit_binary_generator,build_simple_method_frame,3,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_binary_generator.erl"},{line,59}]},{rabbit_writer,internal_send_command_async,2,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,333}]},{rabbit_writer,handle_message,3,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,209}]},{rabbit_writer,mainloop1,2,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,193}]},{rabbit_writer,mainloop,2,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,184}]}]}
+     Offender:   [{pid,<0.250.0>},{name,writer},{mfargs,{rabbit_writer,start_link,[#Port<0.7>,1,131072,rabbit_framing_amqp_0_9_1,<0.249.0>,{<<"client 127.0.0.1:39357 -> 127.0.0.1:5672">>,1}]}},{restart_type,transient},{shutdown,30000},{child_type,worker}]
+
+2019-04-10 15:23:20 =SUPERVISOR REPORT====
+     Supervisor: {<0.247.0>,amqp_channel_sup}
+     Context:    shutdown
+     Reason:     reached_max_restart_intensity
+     Offender:   [{pid,<0.250.0>},{name,writer},{mfargs,{rabbit_writer,start_link,[#Port<0.7>,1,131072,rabbit_framing_amqp_0_9_1,<0.249.0>,{<<"client 127.0.0.1:39357 -> 127.0.0.1:5672">>,1}]}},{restart_type,transient},{shutdown,30000},{child_type,worker}]
+
+2019-04-10 15:23:39 =CRASH REPORT====
+  crasher:
+    initial call: rabbit_writer:enter_mainloop/2
+    pid: <0.250.0>
+    registered_name: []
+    exception error: bad argument: [{erlang,size,[#{consumer_count => 0,message_count => 0,queue => <<"amq.gen-032KSQS3I-5fElv_ARD7gQ">>}],[]},{rabbit_framing_amqp_0_9_1,shortstr_size,1,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_framing_amqp_0_9_1.erl"},{line,185}]},{rabbit_framing_amqp_0_9_1,encode_method_fields,1,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_framing_amqp_0_9_1.erl"},{line,1088}]},{rabbit_binary_generator,build_simple_method_frame,3,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_binary_generator.erl"},{line,59}]},{rabbit_writer,internal_send_command_async,2,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,333}]},{rabbit_writer,handle_message,3,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,209}]},{rabbit_writer,mainloop1,2,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,193}]},{rabbit_writer,mainloop,2,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,184}]}]
+    ancestors: [<0.247.0>,<0.241.0>,<0.237.0>,<0.236.0>,amqp_sup,<0.229.0>]
+    message_queue_len: 0
+    messages: []
+    links: [<0.247.0>]
+    dictionary: [{process_name,{rabbit_writer,{<<"client 127.0.0.1:60107 -> 127.0.0.1:5672">>,1}}}]
+    trap_exit: false
+    status: running
+    heap_size: 2586
+    stack_size: 27
+    reductions: 1002
+  neighbours:
+2019-04-10 15:23:39 =SUPERVISOR REPORT====
+     Supervisor: {<0.247.0>,amqp_channel_sup}
+     Context:    child_terminated
+     Reason:     {badarg,[{erlang,size,[#{consumer_count => 0,message_count => 0,queue => <<"amq.gen-032KSQS3I-5fElv_ARD7gQ">>}],[]},{rabbit_framing_amqp_0_9_1,shortstr_size,1,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_framing_amqp_0_9_1.erl"},{line,185}]},{rabbit_framing_amqp_0_9_1,encode_method_fields,1,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_framing_amqp_0_9_1.erl"},{line,1088}]},{rabbit_binary_generator,build_simple_method_frame,3,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_binary_generator.erl"},{line,59}]},{rabbit_writer,internal_send_command_async,2,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,333}]},{rabbit_writer,handle_message,3,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,209}]},{rabbit_writer,mainloop1,2,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,193}]},{rabbit_writer,mainloop,2,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,184}]}]}
+     Offender:   [{pid,<0.250.0>},{name,writer},{mfargs,{rabbit_writer,start_link,[#Port<0.7>,1,131072,rabbit_framing_amqp_0_9_1,<0.249.0>,{<<"client 127.0.0.1:60107 -> 127.0.0.1:5672">>,1}]}},{restart_type,transient},{shutdown,30000},{child_type,worker}]
+
+2019-04-10 15:23:39 =SUPERVISOR REPORT====
+     Supervisor: {<0.247.0>,amqp_channel_sup}
+     Context:    shutdown
+     Reason:     reached_max_restart_intensity
+     Offender:   [{pid,<0.250.0>},{name,writer},{mfargs,{rabbit_writer,start_link,[#Port<0.7>,1,131072,rabbit_framing_amqp_0_9_1,<0.249.0>,{<<"client 127.0.0.1:60107 -> 127.0.0.1:5672">>,1}]}},{restart_type,transient},{shutdown,30000},{child_type,worker}]
+
+2019-04-10 15:25:44 =CRASH REPORT====
+  crasher:
+    initial call: rabbit_writer:enter_mainloop/2
+    pid: <0.250.0>
+    registered_name: []
+    exception error: bad argument: [{erlang,size,[#{consumer_count => 0,message_count => 0,queue => <<"amq.gen-qllutj32426daiQ91wfqew">>}],[]},{rabbit_framing_amqp_0_9_1,shortstr_size,1,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_framing_amqp_0_9_1.erl"},{line,185}]},{rabbit_framing_amqp_0_9_1,encode_method_fields,1,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_framing_amqp_0_9_1.erl"},{line,1088}]},{rabbit_binary_generator,build_simple_method_frame,3,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_binary_generator.erl"},{line,59}]},{rabbit_writer,internal_send_command_async,2,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,333}]},{rabbit_writer,handle_message,3,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,209}]},{rabbit_writer,mainloop1,2,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,193}]},{rabbit_writer,mainloop,2,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,184}]}]
+    ancestors: [<0.247.0>,<0.241.0>,<0.237.0>,<0.236.0>,amqp_sup,<0.229.0>]
+    message_queue_len: 0
+    messages: []
+    links: [<0.247.0>]
+    dictionary: [{process_name,{rabbit_writer,{<<"client 127.0.0.1:33565 -> 127.0.0.1:5672">>,1}}}]
+    trap_exit: false
+    status: running
+    heap_size: 2586
+    stack_size: 27
+    reductions: 1002
+  neighbours:
+2019-04-10 15:25:44 =SUPERVISOR REPORT====
+     Supervisor: {<0.247.0>,amqp_channel_sup}
+     Context:    child_terminated
+     Reason:     {badarg,[{erlang,size,[#{consumer_count => 0,message_count => 0,queue => <<"amq.gen-qllutj32426daiQ91wfqew">>}],[]},{rabbit_framing_amqp_0_9_1,shortstr_size,1,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_framing_amqp_0_9_1.erl"},{line,185}]},{rabbit_framing_amqp_0_9_1,encode_method_fields,1,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_framing_amqp_0_9_1.erl"},{line,1088}]},{rabbit_binary_generator,build_simple_method_frame,3,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_binary_generator.erl"},{line,59}]},{rabbit_writer,internal_send_command_async,2,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,333}]},{rabbit_writer,handle_message,3,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,209}]},{rabbit_writer,mainloop1,2,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,193}]},{rabbit_writer,mainloop,2,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,184}]}]}
+     Offender:   [{pid,<0.250.0>},{name,writer},{mfargs,{rabbit_writer,start_link,[#Port<0.7>,1,131072,rabbit_framing_amqp_0_9_1,<0.249.0>,{<<"client 127.0.0.1:33565 -> 127.0.0.1:5672">>,1}]}},{restart_type,transient},{shutdown,30000},{child_type,worker}]
+
+2019-04-10 15:25:44 =SUPERVISOR REPORT====
+     Supervisor: {<0.247.0>,amqp_channel_sup}
+     Context:    shutdown
+     Reason:     reached_max_restart_intensity
+     Offender:   [{pid,<0.250.0>},{name,writer},{mfargs,{rabbit_writer,start_link,[#Port<0.7>,1,131072,rabbit_framing_amqp_0_9_1,<0.249.0>,{<<"client 127.0.0.1:33565 -> 127.0.0.1:5672">>,1}]}},{restart_type,transient},{shutdown,30000},{child_type,worker}]
+
+2019-04-10 15:38:10 =CRASH REPORT====
+  crasher:
+    initial call: rabbit_writer:enter_mainloop/2
+    pid: <0.250.0>
+    registered_name: []
+    exception error: bad argument: [{erlang,size,[#{consumer_count => 0,message_count => 0,queue => <<"amq.gen-Yx1z27O7bw7kB7G0ZOsTZg">>}],[]},{rabbit_framing_amqp_0_9_1,shortstr_size,1,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_framing_amqp_0_9_1.erl"},{line,185}]},{rabbit_framing_amqp_0_9_1,encode_method_fields,1,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_framing_amqp_0_9_1.erl"},{line,1088}]},{rabbit_binary_generator,build_simple_method_frame,3,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_binary_generator.erl"},{line,59}]},{rabbit_writer,internal_send_command_async,2,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,333}]},{rabbit_writer,handle_message,3,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,209}]},{rabbit_writer,mainloop1,2,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,193}]},{rabbit_writer,mainloop,2,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,184}]}]
+    ancestors: [<0.247.0>,<0.241.0>,<0.237.0>,<0.236.0>,amqp_sup,<0.229.0>]
+    message_queue_len: 0
+    messages: []
+    links: [<0.247.0>]
+    dictionary: [{process_name,{rabbit_writer,{<<"client 127.0.0.1:46091 -> 127.0.0.1:5672">>,1}}}]
+    trap_exit: false
+    status: running
+    heap_size: 2586
+    stack_size: 27
+    reductions: 1002
+  neighbours:
+2019-04-10 15:38:10 =SUPERVISOR REPORT====
+     Supervisor: {<0.247.0>,amqp_channel_sup}
+     Context:    child_terminated
+     Reason:     {badarg,[{erlang,size,[#{consumer_count => 0,message_count => 0,queue => <<"amq.gen-Yx1z27O7bw7kB7G0ZOsTZg">>}],[]},{rabbit_framing_amqp_0_9_1,shortstr_size,1,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_framing_amqp_0_9_1.erl"},{line,185}]},{rabbit_framing_amqp_0_9_1,encode_method_fields,1,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_framing_amqp_0_9_1.erl"},{line,1088}]},{rabbit_binary_generator,build_simple_method_frame,3,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_binary_generator.erl"},{line,59}]},{rabbit_writer,internal_send_command_async,2,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,333}]},{rabbit_writer,handle_message,3,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,209}]},{rabbit_writer,mainloop1,2,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,193}]},{rabbit_writer,mainloop,2,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,184}]}]}
+     Offender:   [{pid,<0.250.0>},{name,writer},{mfargs,{rabbit_writer,start_link,[#Port<0.7>,1,131072,rabbit_framing_amqp_0_9_1,<0.249.0>,{<<"client 127.0.0.1:46091 -> 127.0.0.1:5672">>,1}]}},{restart_type,transient},{shutdown,30000},{child_type,worker}]
+
+2019-04-10 15:38:10 =SUPERVISOR REPORT====
+     Supervisor: {<0.247.0>,amqp_channel_sup}
+     Context:    shutdown
+     Reason:     reached_max_restart_intensity
+     Offender:   [{pid,<0.250.0>},{name,writer},{mfargs,{rabbit_writer,start_link,[#Port<0.7>,1,131072,rabbit_framing_amqp_0_9_1,<0.249.0>,{<<"client 127.0.0.1:46091 -> 127.0.0.1:5672">>,1}]}},{restart_type,transient},{shutdown,30000},{child_type,worker}]
+
+2019-04-10 15:41:59 =CRASH REPORT====
+  crasher:
+    initial call: rabbit_writer:enter_mainloop/2
+    pid: <0.250.0>
+    registered_name: []
+    exception error: bad argument: [{erlang,size,[#{consumer_count => 0,message_count => 0,queue => <<"amq.gen-I8gdxGbapcqUC8AY_JJT_Q">>}],[]},{rabbit_framing_amqp_0_9_1,shortstr_size,1,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_framing_amqp_0_9_1.erl"},{line,185}]},{rabbit_framing_amqp_0_9_1,encode_method_fields,1,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_framing_amqp_0_9_1.erl"},{line,1088}]},{rabbit_binary_generator,build_simple_method_frame,3,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_binary_generator.erl"},{line,59}]},{rabbit_writer,internal_send_command_async,2,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,333}]},{rabbit_writer,handle_message,3,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,209}]},{rabbit_writer,mainloop1,2,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,193}]},{rabbit_writer,mainloop,2,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,184}]}]
+    ancestors: [<0.247.0>,<0.241.0>,<0.237.0>,<0.236.0>,amqp_sup,<0.229.0>]
+    message_queue_len: 0
+    messages: []
+    links: [<0.247.0>]
+    dictionary: [{process_name,{rabbit_writer,{<<"client 127.0.0.1:40287 -> 127.0.0.1:5672">>,1}}}]
+    trap_exit: false
+    status: running
+    heap_size: 2586
+    stack_size: 27
+    reductions: 1002
+  neighbours:
+2019-04-10 15:41:59 =SUPERVISOR REPORT====
+     Supervisor: {<0.247.0>,amqp_channel_sup}
+     Context:    child_terminated
+     Reason:     {badarg,[{erlang,size,[#{consumer_count => 0,message_count => 0,queue => <<"amq.gen-I8gdxGbapcqUC8AY_JJT_Q">>}],[]},{rabbit_framing_amqp_0_9_1,shortstr_size,1,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_framing_amqp_0_9_1.erl"},{line,185}]},{rabbit_framing_amqp_0_9_1,encode_method_fields,1,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_framing_amqp_0_9_1.erl"},{line,1088}]},{rabbit_binary_generator,build_simple_method_frame,3,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_binary_generator.erl"},{line,59}]},{rabbit_writer,internal_send_command_async,2,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,333}]},{rabbit_writer,handle_message,3,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,209}]},{rabbit_writer,mainloop1,2,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,193}]},{rabbit_writer,mainloop,2,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,184}]}]}
+     Offender:   [{pid,<0.250.0>},{name,writer},{mfargs,{rabbit_writer,start_link,[#Port<0.7>,1,131072,rabbit_framing_amqp_0_9_1,<0.249.0>,{<<"client 127.0.0.1:40287 -> 127.0.0.1:5672">>,1}]}},{restart_type,transient},{shutdown,30000},{child_type,worker}]
+
+2019-04-10 15:41:59 =SUPERVISOR REPORT====
+     Supervisor: {<0.247.0>,amqp_channel_sup}
+     Context:    shutdown
+     Reason:     reached_max_restart_intensity
+     Offender:   [{pid,<0.250.0>},{name,writer},{mfargs,{rabbit_writer,start_link,[#Port<0.7>,1,131072,rabbit_framing_amqp_0_9_1,<0.249.0>,{<<"client 127.0.0.1:40287 -> 127.0.0.1:5672">>,1}]}},{restart_type,transient},{shutdown,30000},{child_type,worker}]
+
+2019-04-10 15:50:48 =CRASH REPORT====
+  crasher:
+    initial call: rabbit_writer:enter_mainloop/2
+    pid: <0.250.0>
+    registered_name: []
+    exception error: bad argument: [{erlang,size,[#{consumer_count => 0,message_count => 0,queue => <<"amq.gen-AVh6Jie69ncuNVPnGXydfA">>}],[]},{rabbit_framing_amqp_0_9_1,shortstr_size,1,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_framing_amqp_0_9_1.erl"},{line,185}]},{rabbit_framing_amqp_0_9_1,encode_method_fields,1,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_framing_amqp_0_9_1.erl"},{line,1088}]},{rabbit_binary_generator,build_simple_method_frame,3,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_binary_generator.erl"},{line,59}]},{rabbit_writer,internal_send_command_async,2,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,333}]},{rabbit_writer,handle_message,3,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,209}]},{rabbit_writer,mainloop1,2,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,193}]},{rabbit_writer,mainloop,2,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,184}]}]
+    ancestors: [<0.247.0>,<0.241.0>,<0.237.0>,<0.236.0>,amqp_sup,<0.229.0>]
+    message_queue_len: 0
+    messages: []
+    links: [<0.247.0>]
+    dictionary: [{process_name,{rabbit_writer,{<<"client 127.0.0.1:36773 -> 127.0.0.1:5672">>,1}}}]
+    trap_exit: false
+    status: running
+    heap_size: 2586
+    stack_size: 27
+    reductions: 1002
+  neighbours:
+2019-04-10 15:50:48 =SUPERVISOR REPORT====
+     Supervisor: {<0.247.0>,amqp_channel_sup}
+     Context:    child_terminated
+     Reason:     {badarg,[{erlang,size,[#{consumer_count => 0,message_count => 0,queue => <<"amq.gen-AVh6Jie69ncuNVPnGXydfA">>}],[]},{rabbit_framing_amqp_0_9_1,shortstr_size,1,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_framing_amqp_0_9_1.erl"},{line,185}]},{rabbit_framing_amqp_0_9_1,encode_method_fields,1,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_framing_amqp_0_9_1.erl"},{line,1088}]},{rabbit_binary_generator,build_simple_method_frame,3,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_binary_generator.erl"},{line,59}]},{rabbit_writer,internal_send_command_async,2,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,333}]},{rabbit_writer,handle_message,3,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,209}]},{rabbit_writer,mainloop1,2,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,193}]},{rabbit_writer,mainloop,2,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,184}]}]}
+     Offender:   [{pid,<0.250.0>},{name,writer},{mfargs,{rabbit_writer,start_link,[#Port<0.7>,1,131072,rabbit_framing_amqp_0_9_1,<0.249.0>,{<<"client 127.0.0.1:36773 -> 127.0.0.1:5672">>,1}]}},{restart_type,transient},{shutdown,30000},{child_type,worker}]
+
+2019-04-10 15:50:48 =SUPERVISOR REPORT====
+     Supervisor: {<0.247.0>,amqp_channel_sup}
+     Context:    shutdown
+     Reason:     reached_max_restart_intensity
+     Offender:   [{pid,<0.250.0>},{name,writer},{mfargs,{rabbit_writer,start_link,[#Port<0.7>,1,131072,rabbit_framing_amqp_0_9_1,<0.249.0>,{<<"client 127.0.0.1:36773 -> 127.0.0.1:5672">>,1}]}},{restart_type,transient},{shutdown,30000},{child_type,worker}]
+
+2019-04-10 15:52:58 =CRASH REPORT====
+  crasher:
+    initial call: rabbit_writer:enter_mainloop/2
+    pid: <0.250.0>
+    registered_name: []
+    exception error: bad argument: [{erlang,size,[#{consumer_count => 0,message_count => 0,queue => <<"amq.gen-eXDZ-xYjU3UVk7-XY0oqRw">>}],[]},{rabbit_framing_amqp_0_9_1,shortstr_size,1,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_framing_amqp_0_9_1.erl"},{line,185}]},{rabbit_framing_amqp_0_9_1,encode_method_fields,1,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_framing_amqp_0_9_1.erl"},{line,1088}]},{rabbit_binary_generator,build_simple_method_frame,3,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_binary_generator.erl"},{line,59}]},{rabbit_writer,internal_send_command_async,2,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,333}]},{rabbit_writer,handle_message,3,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,209}]},{rabbit_writer,mainloop1,2,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,193}]},{rabbit_writer,mainloop,2,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,184}]}]
+    ancestors: [<0.247.0>,<0.241.0>,<0.237.0>,<0.236.0>,amqp_sup,<0.229.0>]
+    message_queue_len: 0
+    messages: []
+    links: [<0.247.0>]
+    dictionary: [{process_name,{rabbit_writer,{<<"client 127.0.0.1:37063 -> 127.0.0.1:5672">>,1}}}]
+    trap_exit: false
+    status: running
+    heap_size: 2586
+    stack_size: 27
+    reductions: 1002
+  neighbours:
+2019-04-10 15:52:58 =SUPERVISOR REPORT====
+     Supervisor: {<0.247.0>,amqp_channel_sup}
+     Context:    child_terminated
+     Reason:     {badarg,[{erlang,size,[#{consumer_count => 0,message_count => 0,queue => <<"amq.gen-eXDZ-xYjU3UVk7-XY0oqRw">>}],[]},{rabbit_framing_amqp_0_9_1,shortstr_size,1,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_framing_amqp_0_9_1.erl"},{line,185}]},{rabbit_framing_amqp_0_9_1,encode_method_fields,1,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_framing_amqp_0_9_1.erl"},{line,1088}]},{rabbit_binary_generator,build_simple_method_frame,3,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_binary_generator.erl"},{line,59}]},{rabbit_writer,internal_send_command_async,2,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,333}]},{rabbit_writer,handle_message,3,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,209}]},{rabbit_writer,mainloop1,2,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,193}]},{rabbit_writer,mainloop,2,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,184}]}]}
+     Offender:   [{pid,<0.250.0>},{name,writer},{mfargs,{rabbit_writer,start_link,[#Port<0.7>,1,131072,rabbit_framing_amqp_0_9_1,<0.249.0>,{<<"client 127.0.0.1:37063 -> 127.0.0.1:5672">>,1}]}},{restart_type,transient},{shutdown,30000},{child_type,worker}]
+
+2019-04-10 15:52:58 =SUPERVISOR REPORT====
+     Supervisor: {<0.247.0>,amqp_channel_sup}
+     Context:    shutdown
+     Reason:     reached_max_restart_intensity
+     Offender:   [{pid,<0.250.0>},{name,writer},{mfargs,{rabbit_writer,start_link,[#Port<0.7>,1,131072,rabbit_framing_amqp_0_9_1,<0.249.0>,{<<"client 127.0.0.1:37063 -> 127.0.0.1:5672">>,1}]}},{restart_type,transient},{shutdown,30000},{child_type,worker}]
+
+2019-04-10 15:53:38 =CRASH REPORT====
+  crasher:
+    initial call: rabbit_writer:enter_mainloop/2
+    pid: <0.250.0>
+    registered_name: []
+    exception error: bad argument: [{erlang,size,[#{consumer_count => 0,message_count => 0,queue => <<"amq.gen-tUO_9j2tJJLXO42uV671rA">>}],[]},{rabbit_framing_amqp_0_9_1,shortstr_size,1,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_framing_amqp_0_9_1.erl"},{line,185}]},{rabbit_framing_amqp_0_9_1,encode_method_fields,1,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_framing_amqp_0_9_1.erl"},{line,1088}]},{rabbit_binary_generator,build_simple_method_frame,3,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_binary_generator.erl"},{line,59}]},{rabbit_writer,internal_send_command_async,2,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,333}]},{rabbit_writer,handle_message,3,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,209}]},{rabbit_writer,mainloop1,2,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,193}]},{rabbit_writer,mainloop,2,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,184}]}]
+    ancestors: [<0.247.0>,<0.241.0>,<0.237.0>,<0.236.0>,amqp_sup,<0.229.0>]
+    message_queue_len: 0
+    messages: []
+    links: [<0.247.0>]
+    dictionary: [{process_name,{rabbit_writer,{<<"client 127.0.0.1:39805 -> 127.0.0.1:5672">>,1}}}]
+    trap_exit: false
+    status: running
+    heap_size: 2586
+    stack_size: 27
+    reductions: 1005
+  neighbours:
+2019-04-10 15:53:38 =SUPERVISOR REPORT====
+     Supervisor: {<0.247.0>,amqp_channel_sup}
+     Context:    child_terminated
+     Reason:     {badarg,[{erlang,size,[#{consumer_count => 0,message_count => 0,queue => <<"amq.gen-tUO_9j2tJJLXO42uV671rA">>}],[]},{rabbit_framing_amqp_0_9_1,shortstr_size,1,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_framing_amqp_0_9_1.erl"},{line,185}]},{rabbit_framing_amqp_0_9_1,encode_method_fields,1,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_framing_amqp_0_9_1.erl"},{line,1088}]},{rabbit_binary_generator,build_simple_method_frame,3,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_binary_generator.erl"},{line,59}]},{rabbit_writer,internal_send_command_async,2,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,333}]},{rabbit_writer,handle_message,3,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,209}]},{rabbit_writer,mainloop1,2,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,193}]},{rabbit_writer,mainloop,2,[{file,"/home/gustaw/Dokumenty/Projekty/AGH-SR/hospital/deps/rabbit_common/src/rabbit_writer.erl"},{line,184}]}]}
+     Offender:   [{pid,<0.250.0>},{name,writer},{mfargs,{rabbit_writer,start_link,[#Port<0.7>,1,131072,rabbit_framing_amqp_0_9_1,<0.249.0>,{<<"client 127.0.0.1:39805 -> 127.0.0.1:5672">>,1}]}},{restart_type,transient},{shutdown,30000},{child_type,worker}]
+
+2019-04-10 15:53:38 =SUPERVISOR REPORT====
+     Supervisor: {<0.247.0>,amqp_channel_sup}
+     Context:    shutdown
+     Reason:     reached_max_restart_intensity
+     Offender:   [{pid,<0.250.0>},{name,writer},{mfargs,{rabbit_writer,start_link,[#Port<0.7>,1,131072,rabbit_framing_amqp_0_9_1,<0.249.0>,{<<"client 127.0.0.1:39805 -> 127.0.0.1:5672">>,1}]}},{restart_type,transient},{shutdown,30000},{child_type,worker}]
+
+2019-04-10 20:15:19 =ERROR REPORT====
+** Generic server 'Elixir.John' terminating 
+** Last message in was {'$gen_cast',knee}
+** When Server state == #{chan => #{'__struct__' => 'Elixir.AMQP.Channel',conn => #{'__struct__' => 'Elixir.AMQP.Connection',pid => <0.238.0>},pid => <0.249.0>},conn => #{'__struct__' => 'Elixir.AMQP.Connection',pid => <0.238.0>},name => 'Elixir.John',queue => <<"amq.gen-CVxt4cGIXEo2O_-69SQ_yQ">>,tag => <<"amq.ctag-eVYvmNY-RnqvJnCc2qEKcg">>}
+** Reason for termination == 
+** {{badkey,channel,#{chan => #{'__struct__' => 'Elixir.AMQP.Channel',conn => #{'__struct__' => 'Elixir.AMQP.Connection',pid => <0.238.0>},pid => <0.249.0>},conn => #{'__struct__' => 'Elixir.AMQP.Connection',pid => <0.238.0>},name => 'Elixir.John',queue => <<"amq.gen-CVxt4cGIXEo2O_-69SQ_yQ">>,tag => <<"amq.ctag-eVYvmNY-RnqvJnCc2qEKcg">>}},[{'Elixir.Hospital.Doctor',handle_cast,2,[{file,"lib/hospital/doctor.ex"},{line,64}]},{gen_server,try_dispatch,4,[{file,"gen_server.erl"},{line,637}]},{gen_server,handle_msg,6,[{file,"gen_server.erl"},{line,711}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}
+2019-04-10 20:15:19 =CRASH REPORT====
+  crasher:
+    initial call: Elixir.Hospital.Doctor:init/1
+    pid: <0.235.0>
+    registered_name: 'Elixir.John'
+    exception error: {{badkey,channel,#{chan => #{'__struct__' => 'Elixir.AMQP.Channel',conn => #{'__struct__' => 'Elixir.AMQP.Connection',pid => <0.238.0>},pid => <0.249.0>},conn => #{'__struct__' => 'Elixir.AMQP.Connection',pid => <0.238.0>},name => 'Elixir.John',queue => <<"amq.gen-CVxt4cGIXEo2O_-69SQ_yQ">>,tag => <<"amq.ctag-eVYvmNY-RnqvJnCc2qEKcg">>}},[{'Elixir.Hospital.Doctor',handle_cast,2,[{file,"lib/hospital/doctor.ex"},{line,64}]},{gen_server,try_dispatch,4,[{file,"gen_server.erl"},{line,637}]},{gen_server,handle_msg,6,[{file,"gen_server.erl"},{line,711}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}
+    ancestors: [<0.233.0>,<0.78.0>]
+    message_queue_len: 1
+    messages: [{basic_cancel,#{consumer_tag => <<"amq.ctag-eVYvmNY-RnqvJnCc2qEKcg">>,no_wait => true}}]
+    links: [<0.233.0>]
+    dictionary: [{gen_server_call_timeout,60000}]
+    trap_exit: false
+    status: running
+    heap_size: 6772
+    stack_size: 27
+    reductions: 6098
+  neighbours:
+    neighbour: [{pid,<0.233.0>},{registered_name,[]},{initial_call,{'Elixir.IEx.Evaluator',init,['Argument__1','Argument__2','Argument__3','Argument__4']}},{current_function,{'Elixir.IEx.Evaluator',loop,1}},{ancestors,[<0.78.0>]},{message_queue_len,0},{links,[<0.235.0>]},{trap_exit,false},{status,waiting},{heap_size,1598},{stack_size,16},{reductions,4258},{current_stacktrace,[{'Elixir.IEx.Evaluator',loop,1,[{file,"lib/iex/evaluator.ex"},{line,101}]},{'Elixir.IEx.Evaluator',init,4,[{file,"lib/iex/evaluator.ex"},{line,27}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}]
+2019-04-10 21:03:07 =CRASH REPORT====
+  crasher:
+    initial call: Elixir.Hospital.Technician:init/1
+    pid: <0.235.0>
+    registered_name: []
+    exception exit: {{{shutdown,{server_initiated_close,404,<<"NOT_FOUND - no queue 'Elixir.Knee' in vhost '/'">>}},{gen_server,call,[<0.249.0>,{subscribe,{'basic.consume',0,<<"Elixir.Knee">>,<<>>,false,false,false,false,[]},<0.251.0>},60000]}},[{gen_server,call,3,[{file,"gen_server.erl"},{line,223}]},{'Elixir.AMQP.Basic',consume,4,[{file,"lib/amqp/basic.ex"},{line,260}]},{'Elixir.Hospital.Technician','-init/1-fun-0-',3,[{file,"lib/hospital/technician.ex"},{line,56}]},{'Elixir.Enum','-reduce/3-lists^foldl/2-0-',3,[{file,"lib/enum.ex"},{line,1940}]},{'Elixir.Hospital.Technician',init,1,[{file,"lib/hospital/technician.ex"},{line,54}]},{gen_server,init_it,2,[{file,"gen_server.erl"},{line,374}]},{gen_server,init_it,6,[{file,"gen_server.erl"},{line,342}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}
+    ancestors: [<0.233.0>,<0.70.0>]
+    message_queue_len: 0
+    messages: []
+    links: [<0.233.0>]
+    dictionary: [{gen_server_call_timeout,60000}]
+    trap_exit: false
+    status: running
+    heap_size: 987
+    stack_size: 27
+    reductions: 1131
+  neighbours:
+    neighbour: [{pid,<0.233.0>},{registered_name,[]},{initial_call,{'Elixir.IEx.Evaluator',init,['Argument__1','Argument__2','Argument__3','Argument__4']}},{current_function,{code_server,call,1}},{ancestors,[<0.70.0>]},{message_queue_len,0},{links,[<0.235.0>]},{trap_exit,false},{status,waiting},{heap_size,1598},{stack_size,50},{reductions,2782},{current_stacktrace,[{code_server,call,1,[{file,"code_server.erl"},{line,140}]},{error_handler,undefined_function,3,[{file,"error_handler.erl"},{line,41}]},{'Elixir.Kernel',struct,3,[{file,"lib/kernel.ex"},{line,2121}]},{'Elixir.Kernel',inspect,2,[{file,"lib/kernel.ex"},{line,2014}]},{'Elixir.IEx.Evaluator',io_inspect,1,[{file,"lib/iex/evaluator.ex"},{line,285}]},{'Elixir.IEx.Evaluator',handle_eval,5,[{file,"lib/iex/evaluator.ex"},{line,260}]},{'Elixir.IEx.Evaluator',do_eval,3,[{file,"lib/iex/evaluator.ex"},{line,237}]},{'Elixir.IEx.Evaluator',eval,3,[{file,"lib/iex/evaluator.ex"},{line,215}]}]}]
+2019-04-10 22:29:25 =ERROR REPORT====
+** Generic server l1 terminating 
+** Last message in was {'$gen_cast',{knee,<<"Ala">>}}
+** When Server state == #{chan => #{'__struct__' => 'Elixir.AMQP.Channel',conn => #{'__struct__' => 'Elixir.AMQP.Connection',pid => <0.238.0>},pid => <0.249.0>},conn => #{'__struct__' => 'Elixir.AMQP.Connection',pid => <0.238.0>},name => l1,queue => <<"amq.gen-f5I0jrMj9IpG7rl7juyPuw">>,tag => <<"amq.ctag-o0So2zvIb6faY3W65gTpNg">>}
+** Reason for termination == 
+** {'module could not be loaded',[{knee,to_string,[],[]},{'Elixir.Hospital.Doctor',handle_cast,2,[{file,"lib/hospital/doctor.ex"},{line,64}]},{gen_server,try_dispatch,4,[{file,"gen_server.erl"},{line,637}]},{gen_server,handle_msg,6,[{file,"gen_server.erl"},{line,711}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}
+2019-04-10 22:29:25 =CRASH REPORT====
+  crasher:
+    initial call: Elixir.Hospital.Doctor:init/1
+    pid: <0.235.0>
+    registered_name: l1
+    exception error: {undef,[{knee,to_string,[],[]},{'Elixir.Hospital.Doctor',handle_cast,2,[{file,"lib/hospital/doctor.ex"},{line,64}]},{gen_server,try_dispatch,4,[{file,"gen_server.erl"},{line,637}]},{gen_server,handle_msg,6,[{file,"gen_server.erl"},{line,711}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}
+    ancestors: [<0.233.0>,<0.72.0>]
+    message_queue_len: 1
+    messages: [{basic_cancel,#{consumer_tag => <<"amq.ctag-o0So2zvIb6faY3W65gTpNg">>,no_wait => true}}]
+    links: [<0.233.0>]
+    dictionary: [{gen_server_call_timeout,60000}]
+    trap_exit: false
+    status: running
+    heap_size: 6772
+    stack_size: 27
+    reductions: 4827
+  neighbours:
+    neighbour: [{pid,<0.233.0>},{registered_name,[]},{initial_call,{'Elixir.IEx.Evaluator',init,['Argument__1','Argument__2','Argument__3','Argument__4']}},{current_function,{'Elixir.IEx.Evaluator',loop,1}},{ancestors,[<0.72.0>]},{message_queue_len,0},{links,[<0.235.0>]},{trap_exit,false},{status,waiting},{heap_size,610},{stack_size,16},{reductions,4270},{current_stacktrace,[{'Elixir.IEx.Evaluator',loop,1,[{file,"lib/iex/evaluator.ex"},{line,101}]},{'Elixir.IEx.Evaluator',init,4,[{file,"lib/iex/evaluator.ex"},{line,27}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}]
+2019-04-10 22:30:31 =ERROR REPORT====
+** Generic server l1 terminating 
+** Last message in was {'$gen_cast',{knee,<<"ala">>}}
+** When Server state == #{chan => #{'__struct__' => 'Elixir.AMQP.Channel',conn => #{'__struct__' => 'Elixir.AMQP.Connection',pid => <0.238.0>},pid => <0.249.0>},conn => #{'__struct__' => 'Elixir.AMQP.Connection',pid => <0.238.0>},name => l1,queue => <<"amq.gen-GYsV3DSyO0fg_YPg1mIK2A">>,tag => <<"amq.ctag-ECO26aS7cjuT9Zn1LpJj1w">>}
+** Reason for termination == 
+** {badarg,[{'Elixir.Hospital.Doctor',handle_cast,2,[{file,"lib/hospital/doctor.ex"},{line,64}]},{gen_server,try_dispatch,4,[{file,"gen_server.erl"},{line,637}]},{gen_server,handle_msg,6,[{file,"gen_server.erl"},{line,711}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}
+2019-04-10 22:30:31 =CRASH REPORT====
+  crasher:
+    initial call: Elixir.Hospital.Doctor:init/1
+    pid: <0.235.0>
+    registered_name: l1
+    exception error: bad argument: [{'Elixir.Hospital.Doctor',handle_cast,2,[{file,"lib/hospital/doctor.ex"},{line,64}]},{gen_server,try_dispatch,4,[{file,"gen_server.erl"},{line,637}]},{gen_server,handle_msg,6,[{file,"gen_server.erl"},{line,711}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]
+    ancestors: [<0.233.0>,<0.78.0>]
+    message_queue_len: 1
+    messages: [{basic_cancel,#{consumer_tag => <<"amq.ctag-ECO26aS7cjuT9Zn1LpJj1w">>,no_wait => true}}]
+    links: [<0.233.0>]
+    dictionary: [{gen_server_call_timeout,60000}]
+    trap_exit: false
+    status: running
+    heap_size: 6772
+    stack_size: 27
+    reductions: 4366
+  neighbours:
+    neighbour: [{pid,<0.233.0>},{registered_name,[]},{initial_call,{'Elixir.IEx.Evaluator',init,['Argument__1','Argument__2','Argument__3','Argument__4']}},{current_function,{'Elixir.IEx.Evaluator',loop,1}},{ancestors,[<0.78.0>]},{message_queue_len,0},{links,[<0.235.0>]},{trap_exit,false},{status,waiting},{heap_size,987},{stack_size,16},{reductions,4336},{current_stacktrace,[{'Elixir.IEx.Evaluator',loop,1,[{file,"lib/iex/evaluator.ex"},{line,101}]},{'Elixir.IEx.Evaluator',init,4,[{file,"lib/iex/evaluator.ex"},{line,27}]},{proc_lib,init_p_do_apply,3,[{file,"proc_lib.erl"},{line,249}]}]}]
