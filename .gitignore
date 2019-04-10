@@ -17,3 +17,6 @@ lib/
 # compiled java
 *.jar
 out/
+
+# hospital has own gitignore
+!hospital/**
