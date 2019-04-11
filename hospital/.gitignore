@@ -24,3 +24,6 @@ hospital-*.tar
 
 # IntelliJ files
 .idea/
+
+# Logs
+log/

@@ -7,9 +7,6 @@ defmodule Technician do
   # Client
 
   def start(name, skill_one, skill_two) do
-    #name = name |> to_string |> String.downcase()
-    #skill_one = skill_one |> to_string |> String.downcase()
-    #skill_two = skill_two |> to_string |> String.downcase()
     GenServer.start_link(__MODULE__, %{ name: name, skills: [skill_one, skill_two]}, name: name)
   end
 
@@ -37,12 +34,13 @@ defmodule Technician do
     {:ok, %{queue: my_queue}} = AMQP.Queue.declare(channel, "", auto_delete: true)
 
     # create exchange for sending to doctors
-    AMQP.Exchange.declare(channel, "to_doctors", :direct)
+    AMQP.Exchange.declare(channel, "to_doctors", :topic)
 
-    # bind personal queue to exchange
-    # as each doctor has his own queue, and it's name is unique, it will be used as routing key
-    # AMQP.Queue.bind(channel, my_queue, "to_all", routing_key: #)
+    # create exchange for sending info from admin
+    AMQP.Exchange.declare(channel, "to_all", :fanout)
 
+    # bind personal queue to admin exchange
+     AMQP.Queue.bind(channel, my_queue, "to_all")
 
     # create exchange for sending
     AMQP.Exchange.declare(channel, "to_technicians", :topic)
@@ -62,33 +60,36 @@ defmodule Technician do
       end
     end
 
+    # connect to queue from admin
+    {:ok, consumer_tag} = AMQP.Basic.consume(channel, my_queue, self())
+    receive do
+      {:basic_consume_ok, %{consumer_tag: ^consumer_tag}} ->
+        {:ok, consumer_tag}
+    end
+
     # save parameters in state
     {:ok, %{conn: connection, chan: channel, queue: my_queue, name: args.name}}
   end
 
 
   def handle_info({:basic_deliver, message, meta}, state) do
-    # simulate work
-    Process.sleep(5000)
-    IO.puts("#{state.name}: Processed message: #{inspect message}")
-    AMQP.Basic.ack(state.chan, meta.delivery_tag)
+    if message |> String.slice(0..5) == "[Info]" do
+      IO.puts("#{state.name}: Got message: #{inspect message}")
+    else
 
-    # get queueID
-    [_task, qID] = meta.routing_key |> String.split(".", parts: 2)
+        # simulate work
+        Process.sleep(5000)
+        IO.puts("#{state.name}: Processed message: #{inspect message}")
+        AMQP.Basic.ack(state.chan, meta.delivery_tag)
 
-    # send reply
-    AMQP.Basic.publish(state.chan, "to_doctors", qID , message<>" - done.")
+        # get queueID
+        [_task, qID] = meta.routing_key |> String.split(".", parts: 2)
 
-    {:noreply, state}
-  end
+        # send reply
+        AMQP.Basic.publish(state.chan, "to_doctors", qID , message<>" - done.")
 
-  def handle_info(_, state) do
-    IO.puts("Processed info")
-    {:noreply, state}
-  end
+    end
 
-  def handle_call(_,_, state) do
-    IO.puts("Processed call")
     {:noreply, state}
   end
 

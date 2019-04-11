@@ -33,11 +33,16 @@ defmodule Doctor do
     {:ok, %{queue: my_queue}} = AMQP.Queue.declare(channel, "", auto_delete: true)
 
     # create exchange for receiving
-    AMQP.Exchange.declare(channel, "to_doctors", :direct)
+    AMQP.Exchange.declare(channel, "to_doctors", :topic)
+
+    # create exchange for sending info from admin
+    AMQP.Exchange.declare(channel, "to_all", :fanout)
 
     # bind personal queue to exchange
     # as each doctor has his own queue, and it's name is unique, it will be used as routing key
     AMQP.Queue.bind(channel, my_queue, "to_doctors", routing_key: my_queue)
+    # bind personal queue to admin exchange
+    AMQP.Queue.bind(channel, my_queue, "to_all")
 
     # connect to receiving queue
     {:ok, consumer_tag} = AMQP.Basic.consume(channel, my_queue, self())
@@ -60,9 +65,7 @@ defmodule Doctor do
   end
 
   def handle_cast({task, patient_name}, state) do
-    IO.puts("Sending #{task} job, #{state.name} to #{state.queue}")
-    s = Atom.to_string(task)<>"."<>state.queue
-    IO.puts(s)
+    IO.puts("#{state.name}: Sending #{task} job to #{state.queue}")
     AMQP.Basic.publish(state.chan,"to_technicians", Atom.to_string(task)<>"."<>state.queue, patient_name<>": "<>Atom.to_string(task))
     {:noreply, state}
   end
@@ -71,16 +74,6 @@ defmodule Doctor do
   def handle_info({:basic_deliver, message, meta}, state) do
     IO.puts("#{state.name}: Received message: #{inspect message}")
     AMQP.Basic.ack(state.chan, meta.delivery_tag)
-    {:noreply, state}
-  end
-
-  def handle_info(_, state) do
-    IO.puts("Processed info")
-    {:noreply, state}
-  end
-
-  def handle_call(_,_, state) do
-    IO.puts("Processed call")
     {:noreply, state}
   end
 
