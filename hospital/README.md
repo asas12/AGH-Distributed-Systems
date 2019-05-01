@@ -1,21 +1,6 @@
 # Hospital
 
-**TODO: Add description**
+A simple model of hospital communications made for university class using RabbitMQ.
 
-## Installation
-
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `hospital` to your list of dependencies in `mix.exs`:
-
-```elixir
-def deps do
-  [
-    {:hospital, "~> 0.1.0"}
-  ]
-end
-```
-
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/hospital](https://hexdocs.pm/hospital).
+![Example overwiev](Hospital.png)
 

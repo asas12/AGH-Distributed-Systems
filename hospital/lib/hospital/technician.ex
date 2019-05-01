@@ -75,6 +75,7 @@ defmodule Technician do
   def handle_info({:basic_deliver, message, meta}, state) do
     if message |> String.slice(0..5) == "[Info]" do
       IO.puts("#{state.name}: Got message: #{inspect message}")
+      AMQP.Basic.ack(state.chan, meta.delivery_tag)
     else
 
         # simulate work
