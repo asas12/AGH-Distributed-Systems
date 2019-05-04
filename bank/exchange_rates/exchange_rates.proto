@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+//option java_multiple_files = true;
+//option java_package = "io.grpc.examples.helloworld";
+//option java_outer_classname = "HelloWorldProto";
+//option objc_class_prefix = "HLW";
+
+
+service ExchangeRate {
+
+    rpc GetRates(Currencies) returns (stream Rate) {}
+
+    rpc GetTest(NoParams) returns (MonetaryType) {}
+
+}
+
+message Currencies {
+    repeated CurrencyName names = 1;
+
+    enum CurrencyName {
+        EUR = 0;
+        USD = 1;
+        GBP = 2;
+        CHF = 3;
+
+    }
+
+}
+
+message MonetaryType {
+    int64 units = 1;
+    int32 cents = 2;
+}
+
+message Rate {
+    // Enums can't be map keys
+    map<string, MonetaryType> rate = 1;
+}
+
+message NoParams {}
