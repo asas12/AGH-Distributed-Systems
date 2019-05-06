@@ -1,0 +1,8 @@
+#!/bin/bash
+rm -r gen
+thrift --gen py bank.thrift
+mv gen-py gen
+mkdir ./gen/exchange_rates
+. ~/Dokumenty/Projekty/python-venv/exchange_rates/bin/activate
+python -m grpc_tools.protoc -I. --python_out=./gen/exchange_rates/ --grpc_python_out=./gen/exchange_rates/ ./exchange_rates.proto
+deactivate
