@@ -7,6 +7,9 @@ exception FailedLoginException{
 exception FailedToCreateException{
     1: string message
 }
+exception FailedOperationException{
+    1: string message
+}
 
 service ManageService
 {
@@ -22,8 +25,8 @@ service StandardService
 
 service PremiumService extends StandardService
 {
-        map<CurrencyName, MonetaryType> getCredit(1:string PESEL, 2:string hash)
-		throws (1: FailedLoginException e),
+        map<CurrencyName, MonetaryType> getCredit(1:string PESEL, 2:string hash, 3:i32 months, 4:MonetaryType value, 5:CurrencyName currency)
+		throws (1: FailedLoginException fle, 2: FailedOperationException e),
 }
 
 enum AccountType{
@@ -44,6 +47,7 @@ struct ClientData{
 }
 
 enum CurrencyName{
+    PLN,
     EUR,
     USD,
     GBP,

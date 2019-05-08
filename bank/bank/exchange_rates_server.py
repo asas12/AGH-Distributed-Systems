@@ -9,15 +9,15 @@ import random
 import grpc
 import time
 
-import gen.exchange_rates.exchange_rates_pb2  # "as e_r" BREAKS importing!!! why???
-import gen.exchange_rates.exchange_rates_pb2_grpc
+import gen.exchange_rates.exchange_rates_pb2 as e_r
+import gen.exchange_rates.exchange_rates_pb2_grpc as e_r_grpc
 
 _ONE_HOUR_IN_SECONDS = 60 * 60
+
 
 class RatesConcurrentDict(object):
 
     def __init__(self, cv):
-        print('Dict initing')
         self.rates = {'EUR': 4.2795, 'USD': 3.8177, 'GBP': 3.7480, 'CHF': 4.9840}
         self.cv = cv
 
@@ -51,18 +51,17 @@ class RatesConcurrentDict(object):
                 self.cv.notify_all()
 
 
-class ExchangeRatesServicer(gen.exchange_rates.exchange_rates_pb2_grpc.ExchangeRateServicer):
+class ExchangeRatesServicer(e_r_grpc.ExchangeRateServicer):
 
     def __init__(self, rates_dict, cv):
         self.rates = rates_dict
         self.cv = cv
-        print('init')
 
     def GetRates(self, request, context):
         """ This method returns infinite stream of requested currency reates"""
         print(request)
 
-        real_names = [gen.exchange_rates.exchange_rates_pb2.Currencies.CurrencyName.Name(name) for name in request.names]
+        real_names = [e_r.Currencies.CurrencyName.Name(name) for name in request.names]
         print('Getting rates: ', real_names)
 
         with self.cv:
@@ -70,7 +69,7 @@ class ExchangeRatesServicer(gen.exchange_rates.exchange_rates_pb2_grpc.ExchangeR
             rates = self.rates.get_rates(real_names)
 
             for real_name, rate in zip(real_names, rates):
-                m = gen.exchange_rates.exchange_rates_pb2.Rate()
+                m = e_r.Rate()
                 m.rate[real_name] = rate
                 print(real_name, m.rate[real_name])
 
@@ -83,7 +82,7 @@ class ExchangeRatesServicer(gen.exchange_rates.exchange_rates_pb2_grpc.ExchangeR
                 rates = self.rates.get_rates(real_names)
 
                 for real_name, rate in zip(real_names, rates):
-                    m = gen.exchange_rates.exchange_rates_pb2.Rate()
+                    m = e_r.Rate()
                     m.rate[real_name] = rate
                     print(real_name, m.rate[real_name])
 
@@ -101,7 +100,7 @@ def serve():
     cv = threading.Condition()
     rates = RatesConcurrentDict(cv)
 
-    gen.exchange_rates.exchange_rates_pb2_grpc.add_ExchangeRateServicer_to_server(
+    e_r_grpc.add_ExchangeRateServicer_to_server(
         ExchangeRatesServicer(rates, cv), server)
     server.add_insecure_port('[::]:50066')
     print('Serving')
