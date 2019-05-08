@@ -1,0 +1,19 @@
+# ide files
+*.idea
+*.iml
+
+# pycache
+__pycache__/
+
+
+# library files
+lib/
+
+# compiled java
+*.jar
+out/
+gen/
+target/
+
+# my trash for old files
+trash/
